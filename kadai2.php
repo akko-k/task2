@@ -1,6 +1,6 @@
 <?php
 
-function test_func(int $v1, int $v2, int $v3){
+function test_func(int $v1, int $v2, int $v3): string{
     $num = pow($v1, $v2);
     if ($num >= 0 &&   $num <= $v3){
         return (string)$num;
@@ -9,8 +9,8 @@ function test_func(int $v1, int $v2, int $v3){
     }
 }
 
-$v1 = 4;
-$v2 = 2;
+$v1 = 2;
+$v2 = 3;
 $v3 = 20;
 echo test_func($v1, $v2, $v3);
 
