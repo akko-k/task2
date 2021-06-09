@@ -3,19 +3,17 @@
 function test_func(int $v1, int $v2, int $v3)
 {
 	$num = pow($v1, $v2);
-	if (0 <= $num &&   $num <= $v3){
-    echo strval($num);
+	if ($num >= 0 &&   $num <= $v3){
+        return (string)$num;
   	}
 }
 
 $v1 = 2;
 $v2 = 3;
 $v3 = 20;
-test_func($v1, $v2, $v3);
+echo test_func($v1, $v2, $v3);
 
 ?>
-
-
 
 <?php
 class Person {
@@ -45,7 +43,7 @@ class Person {
     }
 	// 自己紹介文を生成
 	public function selfIntroduction(){
-		return 'わたしは' . $this->name . '、' . $this->birthday . '生まれ、' . $this->getGendata() . 'です。';
+		return 'わたしは' . $this->name . '、' . $this->birthday . '生まれ、' . $this->getGendata() . 'です。'. PHP_EOL;
     }
     // 1.-(2)生年月日から年齢を算出し返す「getAge」メソッドを作成
     protected function getAge(){
@@ -69,16 +67,17 @@ class Profile extends Person {
     // 2.-(2)「Person」クラスの「selfIntroduction」メソッドをオーバーライド
 	public function selfIntroduction(){
 	$introduce = <<<EOD
-    私の名前は{$this->name}です。
-    {$this->getAge()}才、{$this->getGendata()}です。
-    出身は{$this->hometown}、趣味は{$this->hobby}です。
+私の名前は{$this->name}です。
+{$this->getAge()}才、{$this->getGendata()}です。
+出身は{$this->hometown}、趣味は{$this->hobby}です。
 
 EOD;
     return $introduce;
     }
 }
-$kawakami = new Person('田中', '1990/07/01', 'm');
-echo $kawakami->selfIntroduction();
+$tanaka = new Person('田中', '1990/07/01', 'm');
+echo $tanaka->selfIntroduction();
 
 $kawakami = new Profile('川上', '1981/06/12', 'f', '三重県','読書');
 echo $kawakami->selfIntroduction();
+?>
