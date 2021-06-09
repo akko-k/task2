@@ -17,11 +17,11 @@ echo test_func($v1, $v2, $v3);
 <?php
 class Person {
     // 名前
-    protected $name = '';
+    protected $name;
     // 生年月日(年/月/日)
-    private $birthday = '';
+    private $birthday;
     // 性別(m:男性, f:女性)
-    private $gender = '';
+    private $gender;
     // 1.-(1)名前、生年月日、性別の情報を受け取りプロパティを初期化するコンストラクタを作成
     public function __construct($name, $birthday, $gender){
         $this->name = $name;
@@ -46,16 +46,16 @@ class Person {
     }
     // 1.-(2)生年月日から年齢を算出し返す「getAge」メソッドを作成
     protected function getAge(){
-        $now = date('Ymd');
-        $birthday_num = str_replace("/", "", $this->birthday);
-        $age = floor(($now - $birthday_num)/10000);
+        $now_ymd = date('Ymd');
+        $birthday_ymd = str_replace("/", "", $this->birthday);
+        $age = floor(($now_ymd - $birthday_ymd)/10000);
         return $age;
      }
 }
 
 class Profile extends Person {
-    private $hometown = '';
-    private $hobby = '';
+    private $hometown;
+    private $hobby;
     // 2.-(1)「hometown(出身地)」「hobby(趣味)」プロパティを作成しコンストラクタで初期化
     public function __construct($name, $birthday, $gender, $hometown, $hobby){
         parent::__construct($name, $birthday, $gender);
