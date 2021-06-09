@@ -4,11 +4,13 @@ function test_func(int $v1, int $v2, int $v3){
     $num = pow($v1, $v2);
     if ($num >= 0 &&   $num <= $v3){
         return (string)$num;
+    } else {
+        return "該当する値が存在しません";
     }
 }
 
-$v1 = 2;
-$v2 = 3;
+$v1 = 4;
+$v2 = 2;
 $v3 = 20;
 echo test_func($v1, $v2, $v3);
 
