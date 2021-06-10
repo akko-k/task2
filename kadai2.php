@@ -1,3 +1,4 @@
+【設問１】
 <?php
 
 function test_func(int $v1, int $v2, int $v3): string
@@ -16,7 +17,38 @@ $v3 = 20;
 echo test_func($v1, $v2, $v3);
 
 ?>
+=====================================================================================================
+【設問２】
+<?php
 
+function getAddress($baseUrl, $zipCode, $appId)
+{
+    $url = $baseUrl . $zipCode . '&appid='. $appId . '&output=json';
+    $addressData = file_get_contents($url);
+    $res = json_decode($addressData, true);
+    $address = $res[Feature][0][Property][Address];
+    return '郵便番号が' . $zipCode . 'の住所は，' .$address . 'です。';
+}
+
+const ZIP_CODE = '532-0011';
+const BASE_URL = 'https://map.yahooapis.jp/search/zip/V1/zipCodeSearch?query=';
+const APP_ID = 'dj00aiZpPVZ0ek43eXZrUkYyaiZzPWNvbnN1bWVyc2VjcmV0Jng9NTM-';
+
+echo getAddress(BASE_URL, ZIP_CODE, APP_ID)
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>郵便番号検索</title>
+</head>
+<body>
+  <p><?= $address; ?></p>
+</body>
+</html>
+=====================================================================================================
+【設問３】
 <?php
 class Person {
     // 名前
@@ -72,7 +104,6 @@ class Profile extends Person {
 私の名前は{$this->name}です。
 {$this->getAge()}才、{$this->getGendata()}です。
 出身は{$this->hometown}、趣味は{$this->hobby}です。
-
 EOD;
     return $introduce;
     }
@@ -84,31 +115,3 @@ $kawakami = new Profile('川上', '1981/06/12', 'f', '三重県','読書');
 echo $kawakami->selfIntroduction();
 ?>
 
-<?php
-
-function getAddress($baseUrl, $zipCode, $appId)
-{
-    $url = $baseUrl . $zipCode . '&appid='. $appId . '&output=json';
-    $addressData = file_get_contents($url);
-    $res = json_decode($addressData, true);
-    $address = $res[Feature][0][Property][Address];
-    return '郵便番号が' . $zipCode . 'の住所は，' .$address . 'です。';
-}
-
-const ZIP_CODE = '532-0011';
-const BASE_URL = 'https://map.yahooapis.jp/search/zip/V1/zipCodeSearch?query=';
-const APP_ID = 'dj00aiZpPVZ0ek43eXZrUkYyaiZzPWNvbnN1bWVyc2VjcmV0Jng9NTM-';
-
-echo getAddress(BASE_URL, ZIP_CODE, APP_ID)
-?>
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>郵便番号検索</title>
-</head>
-<body>
-  <p><?= $address; ?></p>
-</body>
-</html>
