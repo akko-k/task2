@@ -84,7 +84,7 @@ $kawakami = new Profile('川上', '1981/06/12', 'f', '三重県','読書');
 echo $kawakami->selfIntroduction();
 ?>
 
-<<?php
+<?php
 
 function getAddress($baseUrl, $zipCode, $appId)
 {
