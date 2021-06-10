@@ -18,7 +18,6 @@ echo test_func($v1, $v2, $v3);
 
 ?>
 
-
 <?php
 // 【設問２】
 function getAddress($baseUrl, $zipCode, $appId)
@@ -47,7 +46,6 @@ echo getAddress(BASE_URL, ZIP_CODE, APP_ID)
   <p><?= $address; ?></p>
 </body>
 </html>
-
 
 <?php
 // 【設問３】
@@ -115,4 +113,4 @@ echo $tanaka->selfIntroduction();
 
 $kawakami = new Profile('川上', '1981/06/12', 'f', '三重県','読書');
 echo $kawakami->selfIntroduction();
-?>
+
