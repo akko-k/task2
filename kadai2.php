@@ -1,6 +1,6 @@
-【設問１】
-<?php
 
+<?php
+// 【設問１】
 function test_func(int $v1, int $v2, int $v3): string
 {
     $num = pow($v1, $v2);
@@ -17,10 +17,10 @@ $v3 = 20;
 echo test_func($v1, $v2, $v3);
 
 ?>
-=====================================================================================================
-【設問２】
-<?php
 
+
+<?php
+// 【設問２】
 function getAddress($baseUrl, $zipCode, $appId)
 {
     $url = $baseUrl . $zipCode . '&appid='. $appId . '&output=json';
@@ -47,9 +47,10 @@ echo getAddress(BASE_URL, ZIP_CODE, APP_ID)
   <p><?= $address; ?></p>
 </body>
 </html>
-=====================================================================================================
-【設問３】
+
+
 <?php
+// 【設問３】
 class Person {
     // 名前
     protected $name;
@@ -85,7 +86,7 @@ class Person {
         $birthday_ymd = str_replace("/", "", $this->birthday);
         $age = floor(($now_ymd - $birthday_ymd)/10000);
         return $age;
-     }
+    }
 }
 
 class Profile extends Person {
@@ -104,6 +105,7 @@ class Profile extends Person {
 私の名前は{$this->name}です。
 {$this->getAge()}才、{$this->getGendata()}です。
 出身は{$this->hometown}、趣味は{$this->hobby}です。
+
 EOD;
     return $introduce;
     }
@@ -114,4 +116,3 @@ echo $tanaka->selfIntroduction();
 $kawakami = new Profile('川上', '1981/06/12', 'f', '三重県','読書');
 echo $kawakami->selfIntroduction();
 ?>
-
