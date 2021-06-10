@@ -1,6 +1,7 @@
 <?php
 
-function test_func(int $v1, int $v2, int $v3): string{
+function test_func(int $v1, int $v2, int $v3): string
+{
     $num = pow($v1, $v2);
     if ($num >= 0 &&   $num <= $v3){
         return (string)$num;
@@ -82,3 +83,32 @@ echo $tanaka->selfIntroduction();
 $kawakami = new Profile('川上', '1981/06/12', 'f', '三重県','読書');
 echo $kawakami->selfIntroduction();
 ?>
+
+<<?php
+
+function getAddress($baseUrl, $zipCode, $appId)
+{
+    $url = $baseUrl . $zipCode . '&appid='. $appId . '&output=json';
+    $addressData = file_get_contents($url);
+    $res = json_decode($addressData, true);
+    $address = $res[Feature][0][Property][Address];
+    return '郵便番号が' . $zipCode . 'の住所は，' .$address . 'です。';
+}
+
+const ZIP_CODE = '532-0011';
+const BASE_URL = 'https://map.yahooapis.jp/search/zip/V1/zipCodeSearch?query=';
+const APP_ID = 'dj00aiZpPVZ0ek43eXZrUkYyaiZzPWNvbnN1bWVyc2VjcmV0Jng9NTM-';
+
+echo getAddress(BASE_URL, ZIP_CODE, APP_ID)
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>郵便番号検索</title>
+</head>
+<body>
+  <p><?= $address; ?></p>
+</body>
+</html>
